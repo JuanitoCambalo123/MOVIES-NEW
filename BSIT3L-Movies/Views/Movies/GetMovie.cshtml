@@ -1,41 +1,36 @@
 ﻿@model BSIT3L_Movies.Models.MovieViewModel
 
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movie Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        p {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-            p strong {
-                font-weight: bold;
-            }
-
-            p span {
-                color: #007bff;
-            }
-    </style>
+    <title>Movie</title>
 </head>
 <body>
-    <h2>Movie Details</h2>
-    <p><strong>Movie ID:</strong> <span>@Model.Id</span></p>
-    <p><strong>Movie Name:</strong> <span>@Model.Name</span></p>
-    <p><strong>Rating:</strong> <span>@Model.Rating</span></p>
-    <p><strong>Release Year:</strong> <span>@Model.ReleaseYear</span></p>
-    <p><strong>Genre:</strong> <span>@Model.Genre</span></p>
+    <table border="1" class="detail-table">
+        <thead></thead>
+        <tbody>
+            <tr>
+                <td rowspan="5" style="vertical-align: middle;">
+                    @if (!string.IsNullOrEmpty(Model.ImagePath))
+                    {
+                        <img src="@Model.ImagePath" alt="hp" class="custom-image" />
+                    }
+                </td>
+                <td>Movie ID: @Model.Id</td>
+            </tr>
+            <tr><td>Movie Name: @Model.Name</td></tr>
+            <tr><td>Rating: @Model.Rating</td></tr>
+            <tr><td>Release Year: @Model.ReleaseYear</td></tr>
+            <tr><td>Genre: @Model.Genre</td></tr>
+        </tbody>
+    </table>
+    <br>
+    <h3>Watch Here</h3>
+
+    @if (!string.IsNullOrEmpty(Model.VideoPath))
+    {
+        <iframe width="1300" height="665" src="@Model.VideoPath" frameborder="0" allowfullscreen></iframe>
+    }
 </body>
 </html>
-    
